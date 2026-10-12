@@ -57,7 +57,7 @@
      on, and if you don't decide it here you'll discover it as a crash in
      Milestone 5. -->
 **search_listings(description: str, size: str | None, max_price: float | None) → list[dict]**
-Filters listings by price (inclusive) and size, scores the rest by keyword overlap with the description, and returns the best matches first. Returns a list of listing dicts (id, title, description, category, style_tags, size, condition, price, colors, brand, platform), at most 10. Returns `[]` when nothing matches. Size match rule: the requested size must match a whole token of the listing's size, so "M" matches "S/M" but "L" does not match "XL".
+Filters listings to those priced at most max_price + $2 (a deliberate tolerance) and whose size has the requested size as a whole token, scores the rest by keyword overlap with the description, and returns the best matches first. Returns a list of listing dicts (id, title, description, category, style_tags, size, condition, price, colors, brand, platform), at most 10. Returns `[]` when nothing matches. Size match rule: the requested size must match a whole token of the listing's size, so "M" matches "S/M" but "L" does not match "XL".
 
 **suggest_outfit(new_item: dict, wardrobe: dict) → str**
 Asks the model for one or two outfits built around the item. Returns a non-empty string. With an empty wardrobe it returns general styling advice.
